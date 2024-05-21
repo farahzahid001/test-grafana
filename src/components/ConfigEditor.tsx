@@ -1,8 +1,7 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import { Button, CollapsableSection, Collapse, Container, Form, InlineField, InlineFieldRow, InlineSwitch, Input, SecretInput, Switch, useTheme } from '@grafana/ui';
 import { DataSourcePluginOptionsEditorProps } from '@grafana/data';
 import { MyDataSourceOptions, MySecureJsonData } from '../types';
-import { useState } from 'react';
 
 interface Props extends DataSourcePluginOptionsEditorProps<MyDataSourceOptions, MySecureJsonData> { }
 
@@ -58,11 +57,11 @@ export function ConfigEditor(this: any, props: Props) {
     alignItems: 'center',
   };
 
-  function handleClick(event: MouseEvent<HTMLButtonElement, MouseEvent>): void {
+  function handleClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
     throw new Error('Function not implemented.');
   }
 
-  function handleToggleForm(event: MouseEvent<HTMLButtonElement, MouseEvent>): void {
+  function handleToggleForm(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
     throw new Error('Function not implemented.');
   }
 
@@ -88,9 +87,10 @@ export function ConfigEditor(this: any, props: Props) {
 
   function handleAdd(): void {
     const abc = [...Value, []]
+    // @ts-ignore
     setValue(abc)
   }
-  function handleDelete(i) {
+  function handleDelete(i: any) {
     const deleteval = [...Value]
     deleteval.splice(i, 1)
     setValue(deleteval)
@@ -296,7 +296,7 @@ export function ConfigEditor(this: any, props: Props) {
       <h4>Custom HTTP Headers</h4>
       {Value.map((val, i) => {
           return (
-            <div>
+            <div key={i} >
               {/* <div className="gf-form-inline"> */}
                 <div className="gf-form">
                   <div>

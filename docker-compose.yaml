@@ -1,9 +1,9 @@
-version: '3.0'
+# version: '3.0'
 
 services:
   grafana:
     user: root
-    container_name: 'test-test-datasource'
+    container_name: 'test1-test1-datasource'
 
     platform: 'linux/amd64'
     build:
